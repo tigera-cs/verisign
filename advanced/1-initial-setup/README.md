@@ -58,13 +58,13 @@ tigera-elasticsearch   kubernetes.io/aws-ebs   Retain          WaitForFirstConsu
 Calico will be the networking (CNI) and network policy implementation throughout your training lab. To install Calico, we will use an operator, so it will implement and automate the lifecycle of our calico deployment:
 
 ```
-kubectl create -f https://docs.tigera.io/manifests/tigera-operator.yaml
+kubectl create -f https://docs.tigera.io/v3.12/manifests/tigera-operator.yaml
 ```
 
 We need to implement an operator for the prometheus component too:
 
 ```
-kubectl create -f https://docs.tigera.io/manifests/tigera-prometheus-operator.yaml
+kubectl create -f https://docs.tigera.io/v3.12/manifests/tigera-prometheus-operator.yaml
 ```
 
 Check tigera-operator has been successfully rolled out:
@@ -84,7 +84,7 @@ kubectl create secret generic tigera-pull-secret \
 We will apply now the Custom Resource Definitions:
 
 ```
-kubectl apply -f training-lab-workbooks/advanced/1-initial-setup/lab_manifests/custom-resources.yaml
+kubectl create -f https://docs.tigera.io/v3.12/manifests/custom-resources.yaml
 ```
 
 And check the components start progressing:
@@ -125,7 +125,7 @@ monitor               True        False         False      4m50s
 As part of the installtion process, we will implement Network security Policies to protect calico components but allow the communication between them, so we can follow a zero trust security approach. Implement the following calico network policies to the environment:
 
 ```
-kubectl create -f https://docs.tigera.io/manifests/tigera-policies.yaml
+kubectl create -f https://docs.tigera.io/v3.12/manifests/tigera-policies.yaml
 ```
 
 ### 1.1.6. Install the calicoctl utility
@@ -133,7 +133,7 @@ kubectl create -f https://docs.tigera.io/manifests/tigera-policies.yaml
 Perform the commands below to install the calicoctl client:
 
 ```
-curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl
+curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.12.2/calicoctl
 ```
 ```
 chmod +x calicoctl
